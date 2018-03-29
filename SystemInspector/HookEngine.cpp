@@ -27,8 +27,10 @@ bool CHookEngine::Hook(HOOKPROC fn, HINSTANCE hInst, DWORD dwThreadId)
 bool CHookEngine::Unhook()
 {
     if (nullptr != m_hHook) {
-        return (UnhookWindowsHookEx(m_hHook) ? true : false);
+        if(UnhookWindowsHookEx(m_hHook)){
+            m_hHook = nullptr;
+        }
     }
 
-    return true;
+    return (nullptr == m_hHook);
 }

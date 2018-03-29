@@ -10,6 +10,7 @@ public:
     CKeyboardHookEngine(CWnd* pWnd, UINT nMsg);
     virtual ~CKeyboardHookEngine();
 
+    bool PreHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT* pResult);
     void PostHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT res);
 };
 

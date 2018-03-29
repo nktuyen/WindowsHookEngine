@@ -225,18 +225,19 @@ LRESULT CSystemInspectorDlg::OnHookNotify(WPARAM wParam, LPARAM lParam)
             UINT nKeyMsg = (UINT)pData->wParam;
             KBDLLHOOKSTRUCT keyData;
             ZeroMemory(&keyData, sizeof(KBDLLHOOKSTRUCT));
-            CopyMemory(&keyData, (KBDLLHOOKSTRUCT*)lParam, sizeof(KBDLLHOOKSTRUCT));
+            CopyMemory(&keyData, (KBDLLHOOKSTRUCT*)pData->lParam, sizeof(KBDLLHOOKSTRUCT));
+            {
+                strInfo.Format(_T("Message=%d, KeyCode=%u, ScanCode=%u, Flags=%d"), nKeyMsg, keyData.vkCode, keyData.scanCode, keyData.flags);
 
-            strInfo.Format(_T("Message=%d, KeyCode=%d, ScanCode=%d, Flags=%d"), nKeyMsg, keyData.vkCode, keyData.scanCode, keyData.flags);
+                CString strLog;
+                m_edtLog.GetWindowText(strLog);
+                if (!strLog.IsEmpty())
+                    strLog.Append(_T("\r\n"));
 
-            CString strLog;
-            m_edtLog.GetWindowText(strLog);
-            if (!strLog.IsEmpty())
-                strLog.Append(_T("\r\n"));
-
-            strLog.Append(strInfo);
-            m_edtLog.SetWindowText(strLog);
-            m_edtLog.LineScroll(m_edtLog.GetLineCount(), -1);
+                strLog.Append(strInfo);
+                m_edtLog.SetWindowText(strLog);
+                m_edtLog.LineScroll(m_edtLog.GetLineCount(), -1);
+            }
         }
     }
     break;

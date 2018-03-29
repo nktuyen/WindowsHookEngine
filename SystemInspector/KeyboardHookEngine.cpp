@@ -15,12 +15,17 @@ CKeyboardHookEngine::~CKeyboardHookEngine()
 {
 }
 
-void CKeyboardHookEngine::PostHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT res)
+bool CKeyboardHookEngine::PreHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 {
     m_Data.nCode = nCode;
     m_Data.wParam = wParam;
     m_Data.lParam = lParam;
 
+    return false;
+}
+
+void CKeyboardHookEngine::PostHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT res)
+{
     if ((nullptr != m_pWnd) && (m_pWnd->GetSafeHwnd())) {
         if (0 != m_nNotifyMsg) {
             m_pWnd->PostMessage(m_nNotifyMsg, (WPARAM)HookId(), (LPARAM)&m_Data);
