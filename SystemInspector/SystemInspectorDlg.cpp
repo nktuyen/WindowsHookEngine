@@ -201,7 +201,7 @@ LRESULT CSystemInspectorDlg::OnHookNotify(WPARAM wParam, LPARAM lParam)
     case WH_MOUSE_LL:
     {
         if (HC_ACTION == pData->nCode) {
-            UINT nMouseMsg = pData->wParam;
+            UINT nMouseMsg = (UINT)pData->wParam;
             MSLLHOOKSTRUCT mouseData;
             ZeroMemory(&mouseData, sizeof(MSLLHOOKSTRUCT));
             CopyMemory(&mouseData, (MSLLHOOKSTRUCT*)pData->lParam, sizeof(MSLLHOOKSTRUCT));
@@ -222,7 +222,7 @@ LRESULT CSystemInspectorDlg::OnHookNotify(WPARAM wParam, LPARAM lParam)
     case WH_KEYBOARD_LL:
     {
         if (HC_ACTION == pData->nCode) {
-            UINT nKeyMsg = pData->wParam;
+            UINT nKeyMsg = (UINT)pData->wParam;
             KBDLLHOOKSTRUCT keyData;
             ZeroMemory(&keyData, sizeof(KBDLLHOOKSTRUCT));
             CopyMemory(&keyData, (KBDLLHOOKSTRUCT*)lParam, sizeof(KBDLLHOOKSTRUCT));
