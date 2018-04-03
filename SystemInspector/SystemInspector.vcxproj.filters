@@ -39,6 +39,15 @@
     <ClInclude Include="MouseHookEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JournalRecordHookEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HookClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JournalPlaybackHookEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SystemInspector.cpp">
@@ -57,6 +66,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MouseHookEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JournalRecordHookEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HookClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JournalPlaybackHookEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

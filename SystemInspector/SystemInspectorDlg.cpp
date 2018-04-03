@@ -128,8 +128,8 @@ BOOL CSystemInspectorDlg::OnInitDialog()
     strMsgId.Format(_T("%s-%p-%ld"), AfxGetAppName(), AfxGetInstanceHandle(), GetCurrentThreadId());
     s_nHookNotifyId = RegisterWindowMessage(strMsgId);
 
-    m_pKeyboardHookEngine = new CKeyboardHookEngine(this, s_nHookNotifyId);
-    m_pMouseHookEngine = new CMouseHookEngine(this, s_nHookNotifyId);
+    m_pKeyboardHookEngine = CKeyboardHookEngine::createInstance(this, s_nHookNotifyId);
+    m_pMouseHookEngine = CMouseHookEngine::createInstance(this, s_nHookNotifyId);
     m_hHookLibrary = LoadLibrary(_T("HookEngine.dll"));
     if (nullptr != m_hHookLibrary) {
         getHookManagerFunc fn = (getHookManagerFunc)GetProcAddress(m_hHookLibrary, getHookManagerFuncName);

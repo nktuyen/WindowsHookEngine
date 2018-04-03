@@ -1,14 +1,17 @@
 #pragma once
-#include "HookEngine.h"
-class CMouseHookEngine : public CHookEngine
+#include "HookClient.h"
+class CMouseHookEngine : public CHookClient
 {
 private:
-    CWnd* m_pWnd;
-    UINT m_nNotifyMsg;
-    SHookData m_Data;
-public:
     CMouseHookEngine(CWnd * pWnd, UINT nMsg);
+    static CMouseHookEngine* s_pInstance;
+public:
     virtual ~CMouseHookEngine();
-    void PostHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT res);
+    static CMouseHookEngine* createInstance(CWnd * pWnd, UINT nMsg) {
+        if (nullptr == s_pInstance) {
+            s_pInstance = new CMouseHookEngine(pWnd, nMsg);
+        }
+        return s_pInstance;
+    }
 };
 

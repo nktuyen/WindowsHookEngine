@@ -182,7 +182,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HookClient.h" />
     <ClInclude Include="HookEngine.h" />
+    <ClInclude Include="JournalPlaybackHookEngine.h" />
+    <ClInclude Include="JournalRecordHookEngine.h" />
     <ClInclude Include="KeyboardHookEngine.h" />
     <ClInclude Include="MouseHookEngine.h" />
     <ClInclude Include="Resource.h" />
@@ -192,7 +195,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HookClient.cpp" />
     <ClCompile Include="HookEngine.cpp" />
+    <ClCompile Include="JournalPlaybackHookEngine.cpp" />
+    <ClCompile Include="JournalRecordHookEngine.cpp" />
     <ClCompile Include="KeyboardHookEngine.cpp" />
     <ClCompile Include="MouseHookEngine.cpp" />
     <ClCompile Include="stdafx.cpp">

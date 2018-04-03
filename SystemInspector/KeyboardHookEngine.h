@@ -1,16 +1,17 @@
 #pragma once
-#include "HookEngine.h"
-class CKeyboardHookEngine : public CHookEngine
+#include "HookClient.h"
+class CKeyboardHookEngine : public CHookClient
 {
 private:
-    CWnd    * m_pWnd;
-    UINT    m_nNotifyMsg;
-    SHookData m_Data;
-public:
+    static CKeyboardHookEngine* s_pInstance;
     CKeyboardHookEngine(CWnd* pWnd, UINT nMsg);
+public:
     virtual ~CKeyboardHookEngine();
-
-    bool PreHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT* pResult);
-    void PostHook(int nCode, WPARAM wParam, LPARAM lParam, LRESULT res);
+    static CKeyboardHookEngine* createInstance(CWnd* pWnd, UINT nMsg) {
+        if (nullptr == s_pInstance) {
+            s_pInstance = new CKeyboardHookEngine(pWnd, nMsg);
+        }
+        return s_pInstance;
+    }
 };
 
